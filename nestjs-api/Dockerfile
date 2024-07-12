@@ -9,8 +9,9 @@ RUN apk update --no-cache \
 
 RUN npm install -g @nestjs/cli@10.0.0
 
-USER node
-
 WORKDIR /home/node/app
 
+COPY ./.docker/entrypoint.sh /home/node/app/.docker/entrypoint.sh
+RUN chmod +x /home/node/app/.docker/entrypoint.sh
 
+USER node
