@@ -1,7 +1,18 @@
-GET http://localhost:3000/transactions
+
+POST http://localhost:8080/realms/saas-financial-control/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=nest&client_secret=iR7LWFpQEtdE44XqW6ull86mHrI2Exxr&username=user1@user.com&password=123456&grant_type=password
+
+> {% client.global.set("auth_token", response.body.access_token); %}
 
 ###
+GET http://localhost:3000/transactions
+Authorization: Bearer {{auth_token}}
+
+###  FAZER OS REPORTS DA APP PROBLEMAS DE AUtORIZAÇÂO
 POST http://localhost:3000/transactions
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
@@ -24,3 +35,15 @@ Content-Type: application/json
   "name": "Account 1",
   "subdomain": "tenant1"
 }
+
+###
+
+POST http://localhost:8080/auth/realms/saas-financial-control/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id = nest &
+client_secret = iR7LWFpQEtdE44XqW6ull86mHrI2Exxr &
+username = user1@user.com &
+password = 123456 &
+grant_type = password
+

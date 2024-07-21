@@ -7,6 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 import { Transaction } from './transactions/entities/transaction.entity';
 import { AccountsModule } from './accounts/accounts.module';
 import { Account } from './accounts/entities/account.entity';
+import { AuthModule } from './auth/auth.module';
+import { TenantModule } from './tenant/tenant.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   controllers: [AppController],
@@ -29,6 +32,9 @@ import { Account } from './accounts/entities/account.entity';
     }),
     TransactionsModule,
     AccountsModule,
+    AuthModule,
+    TenantModule,
+    ReportsModule,
   ],
   providers: [AppService],
 })

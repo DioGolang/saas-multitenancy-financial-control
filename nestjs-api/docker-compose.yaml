@@ -4,7 +4,7 @@ services:
     build: .
     entrypoint: dockerize -wait tcp://db:3306 -timeout 300s sh /home/node/app/.docker/entrypoint.sh
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
       - .:/home/node/app
     depends_on:
